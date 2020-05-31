@@ -10,10 +10,11 @@
   </head>
 
   <body>
-    <section id="todo">
+    <section id="menucard">
       <h1>Beers</h1>
       <main></main>
       <template class="template_one">
+        <img class="img" src="beer3.png" alt="placeholder" />
         <article class="beer">
           <h2></h2>
           <p class="overall"></p>
@@ -27,8 +28,9 @@
           <p class="appearance"></p>
           <p class="pour"></p> -->
         </article>
-        <button class="add">Add one</button>
+        <button class="add">+</button>
       </template>
+      <a href="#basket" class="basket_button">Go to basket</a>
     </section>
 
     <div class="indhold">
@@ -36,12 +38,10 @@
       <!-- section hvor informationer skal placeres -->
     </div>
 
-    <button class="basket_button">Go to basket</button>
-
     <section id="basket">
       <template class="template_two">
         <article class="order">
-          <p class="beername"></p>
+          <h2 class="beername"></h2>
           <p class="amount"></p>
         </article>
         <button class="remove">remove</button>

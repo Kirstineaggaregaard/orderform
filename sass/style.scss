@@ -12,7 +12,46 @@
 
 body {
   background: vars.$bg-color;
+  max-width: 350px;
 }
+
+#menucard {
+  // overflow: scroll;
+  // overscroll-behavior: contain;
+  // scroll-snap-align: start;
+}
+
+.template_one {
+}
+
+main {
+  display: grid;
+  grid-template-columns: 87px 175px 87px;
+  grid-template-rows: auto;
+  grid-gap: 3px;
+}
+
+.img {
+  width: 100%;
+  padding-left: 40px;
+}
+
+.beer {
+  grid-column-start: 2;
+  grid-column-end: 3;
+}
+
+// IMAGE OF BEER
+// .icon {
+//   width: 100px;
+//   height: 100px;
+//   background-image: var(--icon);
+//   background-size: 100%;
+// }
+
+// [data-theme="El_hefe"] {
+//   --icon: url(imgs/beer1);
+// }
 
 // FONTS
 

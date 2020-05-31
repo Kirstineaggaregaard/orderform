@@ -173,40 +173,7 @@ function orders(beer) {
     allBeers[elementsIndex].amount += 1;
   }
 
-  console.log(allBeers); // console.log("orders");
-  // let data = Object.create(Data);
-  // data.selected = true;
-  // if (data.selected === true) {
-  //   beer.amount = +1;
-  // } else {
-  //   beer.name = beer.name;
-  //   beer.amount = 1;
-  // }
-  // if (allBeers.filter((allBeers) => allBeers.name === "El Hefe")) {
-  //   console.log();
-  // }
-  // const elementsIndex = this.state.allBeers.findIndex((element) => element.name == name);
-  // let newArray = [...this.state.allBeers];
-  // const hefe = allBeers.filter((allBeers) => allBeers.name === "El Hefe");
-  // console.log(elementsIndex);
-  // allBeers.filter(allBeers => allBeers.name === "El Hefe")
-  // const clicked = allBeers.filter((beer) => {
-  //   return beer.amount === 1;
-  // });
-  // const clickedName = clicked.some((amount) => {
-  //   return amount.name === clickedBeer.name;
-  // });
-  // if (clickedBeer.amount === 1) {
-  //   clickedBeer.amount = +1;
-  // } else if (clickedName) {
-  //   clickedBeer.amount = +1;
-  // } else {
-  //   const beer = {
-  //     name: clickedBeer.name,
-  //     amount: 1,
-  //   };
-  // }
-  // allBeers.push(data);
+  console.log(allBeers);
 }
 
 function get() {
@@ -239,7 +206,12 @@ function showHero(beer) {
   copy.querySelector("article").dataset.id = beer._id;
   copy.querySelector("h2").textContent = beer.name;
   copy.querySelector(".overall").textContent = beer.description.overallImpression;
-  copy.querySelector(".alc").textContent = beer.alc + "%vol"; // SKAL I POP-UP
+  copy.querySelector(".alc").textContent = beer.alc + "%vol"; // IMAGE
+  // if (beer.name == "Fairy Tale Ale") {
+  //   copy.querySelector("img").src = "/beer1.png";
+  // }
+  // copy.querySelector(".content").dataset.icon = beer.name;
+  // SKAL I POP-UP
   // copy.querySelector("p").textContent = beer.category;
   // copy.querySelector(".aroma").textContent = "Aroma: " + beer.description.aroma;
   // copy.querySelector(".appearance").textContent = "Appearance: " + beer.description.appearance;
@@ -259,7 +231,7 @@ function showBasket(beer) {
   allBeers.forEach(function (order) {
     var klon = temp.cloneNode(true).content;
     klon.querySelector(".beername").textContent = order.name;
-    klon.querySelector(".amount").textContent = order.amount;
+    klon.querySelector(".amount").textContent = "x" + order.amount;
     klon.querySelector(".remove").addEventListener("click", function () {
       console.log("going to remove");
       removeBeer(order);
@@ -361,7 +333,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61058" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58664" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
