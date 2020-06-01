@@ -5,65 +5,94 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="https://use.typekit.net/von4gre.css">
-    <link rel="stylesheet" href="/style.500aa19d.css">
+
+    <link rel="stylesheet" href="https://use.typekit.net/eyy1rig.css">
+    <link rel="stylesheet" href="/styles.8206c151.css">
     <title>Document</title>
-  <script src="/style.500aa19d.js"></script></head>
+  <script src="/styles.8206c151.js"></script></head>
+  <header><h1 class="logo">FOOBAR</h1></header>
 
   <body>
-    <section id="menucard">
-      <h1>Beers</h1>
-      <main></main>
-      <template class="template_one">
-        <img class="img" src="/beer3.8afbdda4.png" alt="placeholder">
-        <article class="beer">
-          <h2></h2>
-          <p class="overall"></p>
-          <p class="alc"></p>
-          <p class="dkk">65 DKK</p>
-
-          <!-- SKAL I POP-UP -->
-          <!-- <h2></h2> -->
-          <!-- <p></p>
+    <div class="thecontainer">
+      <section id="menucard">
+        <h1 class="beer_h1">Beers</h1>
+        <main></main>
+        <template class="template_one">
+          <article class="beer">
+            <img class="img" src="/beer3.8afbdda4.png" alt="placeholder">
+            <div class="beertext">
+              <h2></h2>
+              <p class="overall"></p>
+              <div class="price">
+                <p class="alc"></p>
+                <p class="dkk">65 DKK</p>
+              </div>
+            </div>
+            <button class="add">+</button>
+            <!-- SKAL I POP-UP -->
+            <!-- <h2></h2> -->
+            <!-- <p></p>
           <p class="aroma"></p>
           <p class="appearance"></p>
           <p class="pour"></p> -->
-        </article>
-        <button class="add">+</button>
-      </template>
-      <a href="#basket" class="basket_button">Go to basket</a>
-    </section>
+          </article>
+        </template>
+      </section>
 
-    <div class="indhold">
-      <section id="liste"></section>
-      <!-- section hvor informationer skal placeres -->
+      <section id="basket" class="none">
+        <h1 class="basket_h1">Basket</h1>
+        <div class="indhold">
+          <section id="liste"></section>
+          <!-- section hvor informationer skal placeres -->
+        </div>
+        <template class="template_two">
+          <article class="order">
+            <div class="basket_text">
+              <h2 class="beername"></h2>
+              <p class="amount"></p>
+            </div>
+            <div>
+              <button class="remove">-</button>
+              <button class="tobasket">+</button>
+            </div>
+          </article>
+        </template>
+        <div class="order_con">
+          <button class="order_button">Order here ➢</button>
+        </div>
+        <h3 class="buymore">Or buy more?</h3>
+
+        <div class="indhold2">
+          <section id="liste2"></section>
+          <!-- section hvor informationer skal placeres -->
+        </div>
+
+        <div id="show_con" class="hidden">
+          <h1 class="showit">Show ID</h1>
+          <h1 class="infront"></h1>
+        </div>
+
+        <template class="template_tree">
+          <article class="showid">
+            <h1 class="order_id"></h1>
+          </article>
+        </template>
+      </section>
     </div>
+    <div class="navigation">
+      <div class="basketbut_con">
+        <a href="#basket" class="basket_button">GO TO BASKET ➢</a>
+      </div>
+      <div class="but_con">
+        <div class="share_but">
+          <a class="share" href="">SHARE IMAGE</a>
+        </div>
 
-    <section id="basket">
-      <template class="template_two">
-        <article class="order">
-          <h2 class="beername"></h2>
-          <p class="amount"></p>
-        </article>
-        <button class="remove">remove</button>
-        <button class="tobasket">+1</button>
-      </template>
-    </section>
-
-    <button class="order_button">Order here</button>
-
-    <div class="indhold2">
-      <section id="liste2"></section>
-      <!-- section hvor informationer skal placeres -->
+        <div class="quit_but">
+          <a class="quit" href="">QUIT</a>
+        </div>
+      </div>
     </div>
-
-    <h1 class="showit">Show ID</h1>
-    <h1 class="infront"></h1>
-
-    <template class="template_tree">
-      <article class="showid">
-        <h1 class="order_id"></h1>
-      </article>
-    </template>
 
     <script src="/script.75da7f30.js"></script>
   </body>
