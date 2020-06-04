@@ -118,12 +118,12 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 
   return newRequire;
 })({"script.js":[function(require,module,exports) {
-var endpoint = "https://kirchris.herokuapp.com/beertypes";
+var endpoint = "https://kirchrinew2.herokuapp.com/beertypes";
 var endpoint2 = "https://frontend-8e4d.restdb.io/rest/pictures";
 var endpoint3 = "https://frontend-8e4d.restdb.io/home/media";
 var apiKey = "5e9961cb436377171a0c24cc";
-var URL = "https://kirchris.herokuapp.com/";
-var URL2 = "https://kirchris.herokuapp.com/order";
+var URL = "https://kirchrinew2.herokuapp.com/";
+var URL2 = "https://kirchrinew2.herokuapp.com/order";
 var time;
 var allBeers = [];
 var deletedBeers = [];
@@ -154,6 +154,7 @@ function start() {
   // });
 
   get();
+  fetchData();
 }
 
 function orders(beer) {
@@ -186,24 +187,24 @@ function get() {
     }
   }).then(function (e) {
     return e.json();
-  }).then(showHeroes); //do stuff with the data
+  }).then(showBeers); //do stuff with the data
 }
 
 get();
 
-function showHeroes(data) {
+function showBeers(data) {
   if (data.length > 10) {
     data.length = 10;
   }
 
-  data.forEach(showHero);
+  data.forEach(showBeer);
 }
 
 function showTheBasket(data2) {
   data2.forEach(showBasket);
 }
 
-function showHero(beer) {
+function showBeer(beer) {
   console.log(beer);
   var template = document.querySelector(".template_one").content;
   var copy = template.cloneNode(true);
@@ -222,6 +223,9 @@ function showHero(beer) {
   // copy.querySelector(".appearance").textContent = "Appearance: " + beer.description.appearance;
   // copy.querySelector(".pour").textContent = "Puringspeed: " + beer.pouringSpeed;
 
+  copy.querySelector(".clickpopup").addEventListener("click", function () {
+    showPopup(beer);
+  });
   copy.querySelector("button").addEventListener("click", function (event) {
     orders(beer);
   });
@@ -229,11 +233,25 @@ function showHero(beer) {
   parent.appendChild(copy);
 }
 
+function showPopup(beer) {
+  document.querySelector("#popup").classList.remove("none");
+  document.querySelector("#menucard").classList.add("hidden");
+  document.querySelector(".close").addEventListener("click", hidePopup);
+  console.log(beer);
+  var describe = beer.description;
+  document.querySelector(".popname").textContent = beer.name; // document.querySelector(".popap").textContent = "APPERANCE: " + describe.appearance;
+
+  document.querySelector(".popflavor").textContent = "FLAVOR: " + describe.flavor;
+}
+
+function hidePopup() {
+  document.querySelector("#popup").classList.add("none");
+  document.querySelector("#menucard").classList.remove("hidden");
+}
+
 function showBasket(beer) {
-  document.querySelector("#menucard").classList.add("none");
+  document.querySelector("#scroll_container").classList.add("none");
   document.querySelector(".basketbut_con").classList.add("hidden");
-  document.querySelector(".thecontainer").classList.remove(".thecontainer");
-  document.querySelector(".thecontainer").classList.add(".smallercontainer");
   document.querySelector(".navigation").style.backgroundColor = "white";
   document.querySelector("#basket").style.display = "block";
   var dest = document.querySelector("#liste");
@@ -244,17 +262,27 @@ function showBasket(beer) {
     var klon = temp.cloneNode(true).content;
     klon.querySelector(".beername").textContent = order.name;
     klon.querySelector(".amount").textContent = "x" + order.amount;
+    klon.querySelector(".orderprice").textContent = order.amount * 65 + " DKK";
     klon.querySelector(".remove").addEventListener("click", function () {
       console.log("going to remove");
       removeBeer(order);
+      7;
+    });
+    klon.querySelector(".delete").addEventListener("click", function () {
+      console.log("deleting beertype");
+      deleteBeer(order);
     });
     klon.querySelector(".tobasket").addEventListener("click", function () {
       console.log("wanna add one more");
       addBeer(order);
     });
+    var amountTotal = allBeers.reduce(function (prev, cur) {
+      return prev + cur.amount;
+    }, 0);
+    console.log("total amount", amountTotal);
+    document.querySelector(".totalprice").textContent = "Total amount " + amountTotal * 65 + " DKK";
     document.querySelector(".order_button").addEventListener("click", function () {
-      console.log("wanna pay and see ID");
-      time = setTimeout(fetchData, 10);
+      console.log("wanna pay and see ID"); // time = setTimeout(fetchData, 10);
     });
     dest.appendChild(klon);
   });
@@ -262,41 +290,50 @@ function showBasket(beer) {
 
 function removeBeer(order) {
   console.log("removing beer");
+  console.log("orderamount" + order.amount);
   var elementsIndex = allBeers.findIndex(function (element) {
     return element.name == order.name;
   });
-  allBeers[elementsIndex].amount -= 1;
+  console.log(elementsIndex);
+
+  if (order.amount > 1) {
+    allBeers[elementsIndex].amount -= 1;
+  } // allBeers.forEach((order) => {
+  //   console.log(order.amount);
+  //   if ((order.amount = 0)) {
+  //     deletedBeers.push(type);
+  //   }
+  // });
+
+
+  var deleteOrder = allBeers.indexOf(order); // allBeers.splice(deleteOrder, 1);
+  // if (allBeers[elementsIndex].amount < 0) {
+  //   deletedBeers.push(allBeers[elementsIndex]);
+  // }
+
   showBasket(); // order.deleted = true;
 }
 
 function addBeer(order) {
-  console.log("removing beer");
+  console.log("adding beer");
   var elementsIndex = allBeers.findIndex(function (element) {
     return element.name == order.name;
   });
   allBeers[elementsIndex].amount += 1;
   showBasket(); // deletedBeers.push(order);
-} // function orders(beer) {
-//   // 1
-//   // find ud af om øllen findes i array'et
-//   const elementsIndex = allBeers.findIndex((element) => element.name == beer.name);
-//   console.log(elementsIndex);
-//   if (elementsIndex === -1) {
-//     // øllen findes ikke
-//     allBeers.push({
-//       name: beer.name,
-//       amount: 1,
-//     });
-//   } else {
-//     allBeers[elementsIndex].amount += 1;
-//   }
-//   console.log(allBeers);
-// }
+}
 
+function deleteBeer(order) {
+  deletedBeers.push(order);
+  var deleteOrder = allBeers.indexOf(order);
+  allBeers.splice(deleteOrder, 1);
+  showBasket(allBeers);
+}
 
 function buyMore() {
-  document.querySelector("#menucard").classList.remove("none");
+  document.querySelector("#scroll_container").classList.remove("none");
   document.querySelector(".basketbut_con").classList.remove("hidden");
+  document.querySelector("#basket").style.display = "none";
   document.querySelector(".thecontainer").classList.add(".thecontainer");
   document.querySelector(".thecontainer").classList.remove(".smallercontainer");
   document.querySelector(".navigation").style.backgroundColor = "white";
@@ -305,7 +342,8 @@ function buyMore() {
 function post() {
   var Data = allBeers;
   var postData = JSON.stringify(Data);
-  fetch("https://kirchris.herokuapp.com/order", {
+  console.log(Data);
+  fetch(URL2, {
     method: "post",
     headers: {
       "Content-Type": "application/json; charset=utf-8"
@@ -314,14 +352,14 @@ function post() {
   }).then(function (res) {
     return res.json();
   }).then(function (Data) {
-    return console.log(Data);
+    return showId(Data);
   });
 }
 
 function fetchData() {
   fetch(URL).then(function (res) {
     return res.json();
-  }).then(showId);
+  });
 }
 
 function fetchOrders() {
@@ -330,13 +368,148 @@ function fetchOrders() {
   }).then(showOrders);
 }
 
-function showId(data) {
+function showId(Data) {
+  console.log(Data);
+  console.log(Data.status); // const people = data.queue;
+  // var last = people[people.length - 1];
+  // // const uno = people[0];
+  // if ((Data.status = 500)) {
+  //   console.log(Data.message);
+
+  if (Data.status == 200) {
+    console.log("im added");
+    showIt(Data);
+  } else {
+    errorFunction(Data);
+  } // }
+  // document.querySelector(".infront").textContent = "There are " + people.length + " people in front of you";
+
+}
+
+function showIt(Data) {
+  console.log("wanna show");
+  document.querySelector(".navigation").classList.add("none");
   document.querySelector("#show_con").classList.remove("hidden");
-  var people = data.queue;
-  var last = people[people.length - 1];
-  var uno = people[0];
-  document.querySelector(".showit").textContent = "Dit ordre nummer er: " + last.id;
-  document.querySelector(".infront").textContent = "Der er " + people.length + " personer foran dig";
+  document.querySelector("#basket").classList.add("hidden");
+  document.querySelector(".showit").textContent = Data.id;
+}
+
+function errorFunction(Data) {
+  alert(Data.message);
+  document.querySelector(".not_serving").textContent = Data.message;
+  document.querySelector("#notserving_con").classList.remove("none");
+  var removeHollaback = "Hollaback Lager";
+  var removeElhefe = "El Hefe";
+  var removeRow = "Row 26";
+  var removeChildhood = "Ruined Childhood";
+  var removeGithop = "Githop";
+  var removeFairy = "Fairy Tale Ale";
+  var removeHoppily = "Hoppily Ever After";
+  var removeSleighride = "Sleighride";
+  var removeSteam = "Steampunk";
+
+  if (Data.status == 500) {
+    if (Data.message = "We are not serving: Hollaback Lager right now!") {
+      allBeers.forEach(function (order) {
+        var deleteErrorOrder = allBeers.indexOf(order);
+
+        if (order.name == removeHollaback) {
+          deletedBeers.push(order);
+          allBeers.splice(removeHollaback, 1);
+        }
+      });
+    }
+
+    if (Data.message = "We are not serving: El Hefe right now!") {
+      allBeers.forEach(function (order) {
+        var deleteErrorOrder = allBeers.indexOf(order);
+
+        if (order.name == removeElhefe) {
+          deletedBeers.push(order);
+          allBeers.splice(removeElhefe, 1);
+        }
+      });
+    }
+
+    if (Data.message = "We are not serving: Row 26 right now!") {
+      allBeers.forEach(function (order) {
+        var deleteErrorOrder = allBeers.indexOf(order);
+
+        if (order.name == removeRow) {
+          deletedBeers.push(order);
+          allBeers.splice(removeRow, 1);
+        }
+      });
+    }
+
+    if (Data.message = "We are not serving: Githop right now!") {
+      allBeers.forEach(function (order) {
+        var deleteErrorOrder = allBeers.indexOf(order);
+
+        if (order.name == removeGithop) {
+          deletedBeers.push(order);
+          allBeers.splice(removeGithop, 1);
+        }
+      });
+    }
+
+    if (Data.message = "We are not serving: Ruined Childhood right now!") {
+      allBeers.forEach(function (order) {
+        var deleteErrorOrder = allBeers.indexOf(order);
+
+        if (order.name == removeChildhood) {
+          deletedBeers.push(order);
+          allBeers.splice(removeChildhood, 1);
+        }
+      });
+    }
+
+    if (Data.message = "We are not serving: Fairy Tale Ale right now!") {
+      allBeers.forEach(function (order) {
+        var deleteErrorOrder = allBeers.indexOf(order);
+
+        if (order.name == removeFairy) {
+          deletedBeers.push(order);
+          allBeers.splice(removeFairy, 1);
+        }
+      });
+    }
+
+    if (Data.message = "We are not serving: Hoppily Ever After right now!") {
+      allBeers.forEach(function (order) {
+        var deleteErrorOrder = allBeers.indexOf(order);
+
+        if (order.name == removeHoppily) {
+          deletedBeers.push(order);
+          allBeers.splice(removeHoppily, 1);
+        }
+      });
+    }
+
+    if (Data.message = "We are not serving: Steampunk After right now!") {
+      allBeers.forEach(function (order) {
+        var deleteErrorOrder = allBeers.indexOf(order);
+
+        if (order.name == removeSteam) {
+          deletedBeers.push(order);
+          allBeers.splice(removeSteam, 1);
+        }
+      });
+    }
+
+    if (Data.message = "We are not serving: Sleighride After right now!") {
+      allBeers.forEach(function (order) {
+        var deleteErrorOrder = allBeers.indexOf(order);
+
+        if (order.name == removeSleighride) {
+          deletedBeers.push(order);
+          allBeers.splice(removeSleighride, 1);
+        }
+      });
+    }
+
+    showBasket(allBeers);
+  }
 }
 
 function showOrders() {
@@ -371,7 +544,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62109" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49214" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

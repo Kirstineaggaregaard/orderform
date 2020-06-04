@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://use.typekit.net/von4gre.css" />
+    <title>Foobar</title>
+    <link rel="stylesheet" href="sass/styles.scss" />
+  </head>
+  <header>
+    <a href="landingpage.html"><h1 class="logo">FOOBAR</h1></a>
+  </header>
+  <body>
+    <div id="sharecon">
+        <button class="closeshare">X</button>
+      <div class="sharetext">
+        <h1>Having fun at Foobar?</h1>
+        <h3 class="share_h3">Please share your favorite memories in pictures, and see them on the screens around the bar!</h3>
+      </div>
+      <form>
+        <label for=""><input name="header" type="text" /></label>
+        <label>
+          <input type="file" name="media" />
+          <input type="submit" value="Upload" />
+        </label>
+      </form>
+
+        <div id="thanksforsharing" class="hidden">
+            <h2>Thank you for sharing!</h2>
+            <h3 class="show_h3">We just wanna make sure you didn't upload anything by accident &#129325;<br>And then we will display your image on the dashboard</h3>
+      </div>
+    <script src="share.js"></script>
+  </body>
+</html>

@@ -9,23 +9,78 @@
     <link rel="stylesheet" href="https://use.typekit.net/eyy1rig.css">
     <link rel="stylesheet" href="/styles.8206c151.css">
     <title>Document</title>
-  <script src="/styles.8206c151.js"></script></head>
-  <header><h1 class="logo">FOOBAR</h1></header>
+  <script src="/styles.8206c151.js"></script><script src="/pay.js"></script></head>
+  <header>
+    <a href="/landingpage.html"><h1 class="logo">FOOBAR</h1></a>
+  </header>
 
   <body>
-    <div class="thecontainer">
+    <div id="popup" class="none">
+      <article class="contentpopup">
+        <button class="close">X</button>
+        <img class="popimg" src="/beer3.8afbdda4.png" alt="placeholder">
+        <h2 class="popname"></h2>
+        <p class="popflavor"></p>
+        <p class="popap"></p>
+      </article>
+    </div>
+    <section id="basket" class="none">
+      <h1 class="basket_h1">Basket</h1>
+      <div class="indhold">
+        <section id="liste"></section>
+        <!-- section hvor informationer skal placeres -->
+      </div>
+      <template class="template_two">
+        <article class="order">
+          <div class="basket_text">
+            <h2 class="beername"></h2>
+            <p class="amount"></p>
+            <p class="orderprice"></p>
+          </div>
+          <div class="basket_buttons">
+            <div>
+              <button class="remove">-</button>
+              <button class="tobasket">+</button>
+            </div>
+            <button class="delete">REMOVE X</button>
+          </div>
+        </article>
+      </template>
+      <h2 class="totalprice"></h2>
+      <div class="order_con">
+        <button class="order_button">CHECKOUT ➢</button>
+      </div>
+      <h3 class="buymore">Or buy more?</h3>
+
+      <div class="indhold2">
+        <section id="liste2"></section>
+        <!-- section hvor informationer skal placeres -->
+      </div>
+
+      <div id="notserving_con" class="none">
+        <div class="show_notserving">
+          <h1 class="not_serving"></h1>
+          <h3 class="not_h3">We have removed the item from your basket. Click "Or buy more" to pick another one!</h3>
+        </div>
+      </div>
+    </section>
+    <div id="scroll_container" class="thecontainer">
       <section id="menucard">
         <h1 class="beer_h1">Beers</h1>
-        <main></main>
+
+        <main class="mainbeers"></main>
+
         <template class="template_one">
           <article class="beer">
-            <img class="img" src="/beer3.8afbdda4.png" alt="placeholder">
-            <div class="beertext">
-              <h2></h2>
-              <p class="overall"></p>
-              <div class="price">
-                <p class="alc"></p>
-                <p class="dkk">65 DKK</p>
+            <div class="clickpopup">
+              <img class="img" src="/beer3.8afbdda4.png" alt="placeholder">
+              <div class="beertext">
+                <h2></h2>
+                <p class="overall"></p>
+                <div class="price">
+                  <p class="alc"></p>
+                  <p class="dkk">65 DKK</p>
+                </div>
               </div>
             </div>
             <button class="add">+</button>
@@ -38,58 +93,38 @@
           </article>
         </template>
       </section>
-
-      <section id="basket" class="none">
-        <h1 class="basket_h1">Basket</h1>
-        <div class="indhold">
-          <section id="liste"></section>
-          <!-- section hvor informationer skal placeres -->
-        </div>
-        <template class="template_two">
-          <article class="order">
-            <div class="basket_text">
-              <h2 class="beername"></h2>
-              <p class="amount"></p>
-            </div>
-            <div>
-              <button class="remove">-</button>
-              <button class="tobasket">+</button>
-            </div>
-          </article>
-        </template>
-        <div class="order_con">
-          <button class="order_button">Order here ➢</button>
-        </div>
-        <h3 class="buymore">Or buy more?</h3>
-
-        <div class="indhold2">
-          <section id="liste2"></section>
-          <!-- section hvor informationer skal placeres -->
-        </div>
-
-        <div id="show_con" class="hidden">
-          <h1 class="showit">Show ID</h1>
-          <h1 class="infront"></h1>
-        </div>
-
-        <template class="template_tree">
-          <article class="showid">
-            <h1 class="order_id"></h1>
-          </article>
-        </template>
-      </section>
     </div>
+    <div id="show_con" class="hidden">
+      <div class="showtext">
+        <h1>Thank you!</h1>
+        <h3 class="show_h3">We will start tab'ing your beers as soon as we get your payment, so keep your eyes out for the screens</h3>
+        <h2>ORDER ID</h2>
+        <h2 class="showit">Show ID</h2>
+        <h2 class="infront"></h2>
+      </div>
+      <div class="paycontainer">
+        <div class="paybut_con">
+          <a href="/pay.html" class="pay_button">PROCEED PAYMENT ➢</a>
+        </div>
+      </div>
+    </div>
+
+    <template class="template_tree">
+      <article class="showid">
+        <h1 class="order_id"></h1>
+      </article>
+    </template>
     <div class="navigation">
       <div class="basketbut_con">
         <a href="#basket" class="basket_button">GO TO BASKET ➢</a>
       </div>
       <div class="but_con">
         <div class="share_but">
-          <a class="share" href="">SHARE IMAGE</a>
+          <a class="share" href="/share.html">SHARE IMAGE</a>
         </div>
 
         <div class="quit_but">
-          <a class="quit" href="">QUIT</a>
+          <a class="quit" href="/landingpage.html">QUIT</a>
         </div>
       </div>
     </div>

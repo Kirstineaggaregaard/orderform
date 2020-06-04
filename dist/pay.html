@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://use.typekit.net/von4gre.css">
+
+    <link rel="stylesheet" href="https://use.typekit.net/eyy1rig.css">
+    <link rel="stylesheet" href="/styles.8206c151.css">
+    <title>Document</title>
+  </head>
+  <header>
+    <a href="/landingpage.html"><h1 class="logo">FOOBAR</h1></a>
+  </header>
+  <body>
+    <section id="form-wrapper">
+      <form action="/thanks.html">
+        <div class="full-card">
+          <label for="card">Cardtype</label>
+          <select id="card" name="card">
+            <option value="visa">Visa </option>
+            <option value="mastercard">Mastercard</option>
+            <option value="american">American Express</option>
+          </select>
+        </div>
+
+        <div class="full-input">
+          <label for="cardholder"> Cardholder name </label>
+          <input id="cardholder" placeholder="Full Name" type="text" style="width: 300px;" required="">
+        </div>
+
+        <div class="full-input">
+          <label for="ccn">Credit Card Number</label>
+          <input id="ccn" type="tel" inputmode="numeric" pattern="[0-9\s]{13,19}" maxlength="19" placeholder="xxxx xxxx xxxx xxxx" required="">
+        </div>
+
+        <div class="full-input">
+          <label for="ed"> Expire Date </label>
+          <input id="ed" placeholder="mm / yy" maxlength="7" type="tel" inputmode="numeric" required="">
+        </div>
+
+        <div class="full-input">
+          <label for="cvv">CCV</label>
+          <input id="cvv" type="tel" inputmode="numeric" autocomplete="cc-number" maxlength="3" placeholder="xxx" required="">
+        </div>
+        <input value="CHECKOUT ➢" onsubmit="return validateForm()" class="completepay" type="submit">
+      </form>
+    </section>
+    <script src="/pay.cfbab265.js"></script>
+  </body>
+</html>
