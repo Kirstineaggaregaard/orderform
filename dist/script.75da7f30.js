@@ -395,9 +395,9 @@ function showIt(Data) {
 }
 
 function errorFunction(Data) {
-  alert(Data.message);
   document.querySelector(".not_serving").textContent = Data.message;
   document.querySelector("#notserving_con").classList.remove("none");
+  document.querySelector(".ok").addEventListener("click", removeErrorPop);
   var removeHollaback = "Hollaback Lager";
   var removeElhefe = "El Hefe";
   var removeRow = "Row 26";
@@ -408,108 +408,111 @@ function errorFunction(Data) {
   var removeSleighride = "Sleighride";
   var removeSteam = "Steampunk";
 
-  if (Data.status == 500) {
-    if (Data.message = "We are not serving: Hollaback Lager right now!") {
-      allBeers.forEach(function (order) {
-        var deleteErrorOrder = allBeers.indexOf(order);
+  if (Data.message === "We are not serving: Hollaback Lager right now!") {
+    allBeers.forEach(function (order) {
+      var deleteErrorOrder = allBeers.indexOf(order);
 
-        if (order.name == removeHollaback) {
-          deletedBeers.push(order);
-          allBeers.splice(removeHollaback, 1);
-        }
-      });
-    }
-
-    if (Data.message = "We are not serving: El Hefe right now!") {
-      allBeers.forEach(function (order) {
-        var deleteErrorOrder = allBeers.indexOf(order);
-
-        if (order.name == removeElhefe) {
-          deletedBeers.push(order);
-          allBeers.splice(removeElhefe, 1);
-        }
-      });
-    }
-
-    if (Data.message = "We are not serving: Row 26 right now!") {
-      allBeers.forEach(function (order) {
-        var deleteErrorOrder = allBeers.indexOf(order);
-
-        if (order.name == removeRow) {
-          deletedBeers.push(order);
-          allBeers.splice(removeRow, 1);
-        }
-      });
-    }
-
-    if (Data.message = "We are not serving: Githop right now!") {
-      allBeers.forEach(function (order) {
-        var deleteErrorOrder = allBeers.indexOf(order);
-
-        if (order.name == removeGithop) {
-          deletedBeers.push(order);
-          allBeers.splice(removeGithop, 1);
-        }
-      });
-    }
-
-    if (Data.message = "We are not serving: Ruined Childhood right now!") {
-      allBeers.forEach(function (order) {
-        var deleteErrorOrder = allBeers.indexOf(order);
-
-        if (order.name == removeChildhood) {
-          deletedBeers.push(order);
-          allBeers.splice(removeChildhood, 1);
-        }
-      });
-    }
-
-    if (Data.message = "We are not serving: Fairy Tale Ale right now!") {
-      allBeers.forEach(function (order) {
-        var deleteErrorOrder = allBeers.indexOf(order);
-
-        if (order.name == removeFairy) {
-          deletedBeers.push(order);
-          allBeers.splice(removeFairy, 1);
-        }
-      });
-    }
-
-    if (Data.message = "We are not serving: Hoppily Ever After right now!") {
-      allBeers.forEach(function (order) {
-        var deleteErrorOrder = allBeers.indexOf(order);
-
-        if (order.name == removeHoppily) {
-          deletedBeers.push(order);
-          allBeers.splice(removeHoppily, 1);
-        }
-      });
-    }
-
-    if (Data.message = "We are not serving: Steampunk After right now!") {
-      allBeers.forEach(function (order) {
-        var deleteErrorOrder = allBeers.indexOf(order);
-
-        if (order.name == removeSteam) {
-          deletedBeers.push(order);
-          allBeers.splice(removeSteam, 1);
-        }
-      });
-    }
-
-    if (Data.message = "We are not serving: Sleighride After right now!") {
-      allBeers.forEach(function (order) {
-        var deleteErrorOrder = allBeers.indexOf(order);
-
-        if (order.name == removeSleighride) {
-          deletedBeers.push(order);
-          allBeers.splice(removeSleighride, 1);
-        }
-      });
-    }
-
-    showBasket(allBeers);
+      if (order.name == removeHollaback) {
+        deletedBeers.push(order);
+        allBeers.splice(deleteErrorOrder, 1);
+      }
+    });
   }
+
+  if (Data.message === "We are not serving: El Hefe right now!") {
+    allBeers.forEach(function (order) {
+      var deleteErrorOrder = allBeers.indexOf(order);
+
+      if (order.name == removeElhefe) {
+        deletedBeers.push(order);
+        allBeers.splice(deleteErrorOrder, 1);
+      }
+    });
+  }
+
+  if (Data.message === "We are not serving: Row 26 right now!") {
+    allBeers.forEach(function (order) {
+      var deleteErrorOrder = allBeers.indexOf(order);
+
+      if (order.name == removeRow) {
+        deletedBeers.push(order);
+        allBeers.splice(deleteErrorOrder, 1);
+      }
+    });
+  }
+
+  if (Data.message === "We are not serving: Githop right now!") {
+    allBeers.forEach(function (order) {
+      var deleteErrorOrder = allBeers.indexOf(order);
+
+      if (order.name == removeGithop) {
+        deletedBeers.push(order);
+        allBeers.splice(deleteErrorOrder, 1);
+      }
+    });
+  }
+
+  if (Data.message === "We are not serving: Ruined Childhood right now!") {
+    allBeers.forEach(function (order) {
+      var deleteErrorOrder = allBeers.indexOf(order);
+
+      if (order.name == removeChildhood) {
+        deletedBeers.push(order);
+        allBeers.splice(deleteErrorOrder, 1);
+      }
+    });
+  }
+
+  if (Data.message === "We are not serving: Fairy Tale Ale right now!") {
+    allBeers.forEach(function (order) {
+      var deleteErrorOrder = allBeers.indexOf(order);
+
+      if (order.name == removeFairy) {
+        deletedBeers.push(order);
+        allBeers.splice(deleteErrorOrder, 1);
+      }
+    });
+  }
+
+  if (Data.message === "We are not serving: Hollaback Lager right now!") {
+    console.log("wanna slice hoppy");
+    allBeers.forEach(function (order) {
+      var deleteErrorOrder = allBeers.indexOf(order);
+
+      if (order.name == removeHoppily) {
+        deletedBeers.push(order);
+        allBeers.splice(deleteErrorOrder, 1);
+      }
+    });
+  }
+
+  if (Data.message === "We are not serving: Steampunk right now!") {
+    allBeers.forEach(function (order) {
+      var deleteErrorOrder = allBeers.indexOf(order);
+
+      if (order.name == removeSteam) {
+        deletedBeers.push(order);
+        allBeers.splice(deleteErrorOrder, 1);
+      }
+    });
+  }
+
+  if (Data.message === "We are not serving: Sleighride right now!") {
+    allBeers.forEach(function (order) {
+      var deleteErrorOrder = allBeers.indexOf(order);
+
+      if (order.name == removeSleighride) {
+        deletedBeers.push(order);
+        allBeers.splice(deleteErrorOrder, 1);
+      }
+    });
+  }
+
+  showBasket(allBeers);
+}
+
+function removeErrorPop() {
+  document.querySelector("#notserving_con").classList.add("none");
 }
 
 function showOrders() {

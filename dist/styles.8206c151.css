@@ -419,6 +419,18 @@ body > form > label:nth-child(1) > input[type=text] {
   margin-top: 25vh;
 }
 
+.ok {
+  height: 4.5vh;
+  width: 11vw;
+  border-radius: 8px;
+  border-color: #141e26;
+  background-color: #141e26;
+  color: white;
+  font-size: 0.8em;
+  margin-top: 3vh;
+  margin-left: 50vw;
+}
+
 .popimg {
   height: 20vh;
   width: 20vw;
